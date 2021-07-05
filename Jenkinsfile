@@ -5,7 +5,7 @@ pipeline{
     stages{
         stage ('git checkout'){
             steps{
-                git credentialsId: 'github', url: 'https://github.com/sudheer535/-premium-app.git'
+                git branch: 'main', credentialsId: 'NewGitHub', url: 'https://github.com/sudheer535/-premium-app.git'
             }
         }
     }
