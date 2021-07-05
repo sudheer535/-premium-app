@@ -8,5 +8,10 @@ pipeline{
                 git branch: 'main', credentialsId: 'NewGitHub', url: 'https://github.com/sudheer535/-premium-app.git'
             }
         }
+        stage('Maven Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
     }
 }
