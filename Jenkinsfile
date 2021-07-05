@@ -2,6 +2,9 @@ pipeline{
     agent {
         label 'Linux'
     }
+    tools {
+        maven 'Maven3'
+    }
     stages{
         stage ('git checkout'){
             steps{
