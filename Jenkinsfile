@@ -28,5 +28,15 @@ pipeline{
                 version: '1.0-SNAPSHOT'
             }
         }
+        Stage('Deploy to Tomcat'){
+            Steps{
+                sshagent(['Tomcat']) {
+                    sh "scp -o StrictHostKeyChecking=no target/premium-app.war ec2-user@172.31.13.24:/opt/tomcat8/webapps/"
+                    sh "ssh ec2-user@172.31.13.24:/opt/tomcat8/bin/shutdown.sh"
+                    sh "ssh ec2-user@172.31.13.24:/opt/tomcat8/bin/startup.sh"
+
+                }
+            }
+        }
     }
 }
